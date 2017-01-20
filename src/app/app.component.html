@@ -1,4 +1,4 @@
-<button class="btn btn-primary" (click)="login()">Login with Google</button>
-<button class="btn btn-default" (click)="logout()">Logout</button>
+<button class="btn btn-primary" (click)="authService.login()">Login with Google</button>
+<button class="btn btn-default" (click)="authService.logout()">Logout</button>
 
-<pre>User: {{user?.uid}}</pre>
+<pre>User: {{authService.user?.uid}}</pre>

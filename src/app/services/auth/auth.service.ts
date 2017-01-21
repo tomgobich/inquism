@@ -31,12 +31,21 @@ export class AuthService {
 
   // Log user into app
   login() {
-    let provider = AuthProviders.Google;
-    let method = AuthMethods.Popup;
+    let provider  = AuthProviders.Google;
+    let method    = AuthMethods.Popup;
 
     this.af.auth
       .login({ provider, method })
-      .then(authUser => this.createUserAccount()) // add check for users existance
+      .then(authUser => {
+        // Look for user in database
+        this.af.database.list(`/users/${authUser.uid}`).first().subscribe(user => {
+          // User found? No create : Yes update
+          user.length < 1 ?
+            this.createUserAccount() :
+            this.updateUserAccount()
+        })
+
+      }) // add check for users existance
   }
 
   // Logs user out of app session
@@ -49,9 +58,10 @@ export class AuthService {
 
   // Creates a user with provider info
   createUserAccount() {
+    console.debug('creating user account');
     let newUser = {
-      displayName: this.user.google.displayName,
-      email: this.user.email,
+      displayName: this.user.auth.displayName,
+      email: this.user.auth.email,
       joinDate: firebase.database.ServerValue.TIMESTAMP,
       lastOnline: firebase.database.ServerValue.TIMESTAMP
     }
@@ -61,9 +71,10 @@ export class AuthService {
 
   // Updates a user with new provider info
   updateUserAccount() {
+    console.debug('updating user account');
     let updatedUser = {
-      displayName: this.user.google.displayName,
-      email: this.user.email,
+      displayName: this.user.auth.displayName,
+      email: this.user.auth.email,
       lastOnline: firebase.database.ServerValue.TIMESTAMP
     }
 

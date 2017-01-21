@@ -36,7 +36,7 @@ export class AuthService {
 
     this.af.auth
       .login({ provider, method })
-      .then(authUser => this.createOrUpdateUserAccount())
+      .then(authUser => this.createUserAccount()) // add check for users existance
   }
 
   // Logs user out of app session
@@ -47,15 +47,27 @@ export class AuthService {
     })
   }
 
-  // Creates or updates a users data with new provider info
-  createOrUpdateUserAccount() {
+  // Creates a user with provider info
+  createUserAccount() {
     let newUser = {
       displayName: this.user.google.displayName,
+      email: this.user.email,
       joinDate: firebase.database.ServerValue.TIMESTAMP,
       lastOnline: firebase.database.ServerValue.TIMESTAMP
     }
 
     this.af.database.object(`/users/${this.user.uid}`).set(newUser);
+  }
+
+  // Updates a user with new provider info
+  updateUserAccount() {
+    let updatedUser = {
+      displayName: this.user.google.displayName,
+      email: this.user.email,
+      lastOnline: firebase.database.ServerValue.TIMESTAMP
+    }
+
+    this.af.database.object(`/users/${this.user.uid}`).update(updatedUser);
   }
 
 }

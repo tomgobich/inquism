@@ -3,44 +3,36 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
+import { AuthModule } from './modules/auth.module';
 
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
 import { AppComponent } from './app.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 // Site routing
-// const appRoutes: Routes = [
-//   {
-//     path: '',
-//     component: HomePageComponent
-//   },
-//   {
-//     path: 'post/question',
-//     component: PostQuestionPageComponent,
-//     canActivate: [AuthGuardService]
-//   },
-// ];
-
-var firebaseConfig = {
-  apiKey: "AIzaSyCM_gEezgMewcM20fvLj4iduFAZpqYF3_g",
-  authDomain: "inquism-8e3e6.firebaseapp.com",
-  databaseURL: "https://inquism-8e3e6.firebaseio.com",
-  storageBucket: "inquism-8e3e6.appspot.com",
-  messagingSenderId: "421979106846"
-};
+const appRoutes: Routes = [
+  { path: '',                 component: HomePageComponent },
+  // { path: 'post/question',    component: PostQuestionPageComponent, canActivate: [AuthGuardService] },
+  { path: '**',               component: NotFoundPageComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundPageComponent,
+    HomePageComponent,
+    NotFoundPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    RouterModule.forRoot(appRoutes),
+    AuthModule
   ],
   providers: [
     AuthService,

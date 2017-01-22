@@ -81,4 +81,26 @@ export class AuthService {
     this.af.database.object(`/users/${this.user.uid}`).update(updatedUser);
   }
 
+  // Returns current user's ID
+  getID(): string {
+    return this.isAuthenticated ? this.user.uid : '';
+  }
+
+  // Returns authentication status
+  isAuthenticated(): boolean {
+    return this.user !== null ? true : false;
+  }
+
+  // Post a question from user
+  postUserQuestion(questionID) {
+    this.af.database.list(`/users/${this.user.uid}/questions`).first().subscribe(questions => {
+      // Needed to just have array of key values (removes excess DB data)
+      let questionsList = questions.map(question => question.$value);
+      questionsList.push(questionID)
+
+      // Push new questions list to user
+      this.af.database.object(`/users/${this.user.uid}/questions`).set(questionsList);
+    })
+  }
+
 }

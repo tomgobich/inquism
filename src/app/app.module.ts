@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { AuthModule } from './modules/auth.module';
@@ -11,11 +11,12 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { PostQuestionPageComponent } from './pages/post-question-page/post-question-page.component';
 
 // Site routing
 const appRoutes: Routes = [
   { path: '',                 component: HomePageComponent },
-  // { path: 'post/question',    component: PostQuestionPageComponent, canActivate: [AuthGuardService] },
+  { path: 'post/question',    component: PostQuestionPageComponent, canActivate: [AuthGuardService] },
   { path: '**',               component: NotFoundPageComponent }
 ];
 
@@ -25,11 +26,13 @@ const appRoutes: Routes = [
     NotFoundPageComponent,
     HomePageComponent,
     NotFoundPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    PostQuestionPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
     AuthModule

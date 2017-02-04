@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PostQuestionPageComponent } from './pages/post-question-page/post-question-page.component';
+import { HeaderComponent } from './controls/shared/header/header.component';
 
 // Site routing
 const appRoutes: Routes = [
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     HomePageComponent,
     NotFoundPageComponent,
     HomePageComponent,
-    PostQuestionPageComponent
+    PostQuestionPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,5 @@
+<app-header></app-header>
+
 <div class="container">
-  <button class="btn btn-primary" (click)="authService.login()">Login with Google</button>
-  <button class="btn btn-default" (click)="authService.logout()">Logout</button>
-
-  <pre>User: {{authService.user?.uid}}</pre>
-
   <router-outlet></router-outlet>
 </div>

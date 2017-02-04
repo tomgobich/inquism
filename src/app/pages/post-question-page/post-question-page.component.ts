@@ -39,7 +39,7 @@ export class PostQuestionPageComponent implements OnInit {
       let question  = questionForm.value.question;
       let tags      = questionForm.value.tags.split(" ");
       let postDate  = new Date();
-      let user      = this.authService.getID();
+      let user      = this.authService.user.google;
 
       if(user) {
         let newQuestion = this.questions.push({ question, tags, postDate, user }).key;

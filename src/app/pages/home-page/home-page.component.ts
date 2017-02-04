@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-home-page',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  questions: FirebaseListObservable<any>
+
+  constructor(private af: AngularFire) {
+    this.questions = af.database.list('/questions');
+  }
 
   ngOnInit() {
   }

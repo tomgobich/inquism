@@ -1,0 +1,26 @@
+header {
+  $header-height: 50px;
+  width: 100%;
+  background-color: #434A54;
+  padding: 10px;
+  margin: 0 auto;
+
+  .logo {
+    color: white;
+    font-size: 1.4em;
+    line-height: $header-height;
+  }
+
+  .site-navigation {
+    height: $header-height;
+    list-style: none;
+
+    &.right { float: right; }
+
+    li {
+      height: 100%;
+      line-height: $header-height;
+      float: left;
+    }
+  }
+}

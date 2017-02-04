@@ -1,3 +1,7 @@
 <p>
   home-page works!
 </p>
+
+<div class="well" *ngFor="let question of questions | async">
+  <h3>{{ question.question }}</h3>
+</div>

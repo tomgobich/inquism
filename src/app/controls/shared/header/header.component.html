@@ -1,0 +1,25 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h1 class="logo">Inquism</h1>
+      </div>
+      <div class="col-md-6">
+        <nav class="site-navigation">
+          <li class="align-middle"><a routerLink="/">Home</a></li>
+          <li *ngIf="(af.auth | async)"><a routerLink="/post/question">Ask Question</a></li>
+        </nav>
+      </div>
+      <div class="col-md-3">
+        <nav class="site-navigation right">
+          <li *ngIf="!(af.auth | async)">
+            <button class="btn btn-outline-primary my-2 my-sm-0" (click)="authService.login()">
+              Login with Google
+            </button>
+          </li>
+          <li *ngIf="(af.auth | async)"><a routerLink="/signup" (click)="af.auth.logout()">Logout</a></li>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

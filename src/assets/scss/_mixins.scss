@@ -13,6 +13,7 @@
 // prefix all with Bootstrap's btn class
 @mixin btn-outline($border-color: $color-brand, $text-color: $color-white) {
   @include border-outline($color: $border-color);
+  @include transition;
   color: $border-color;
   background-color: transparent;
   cursor: pointer;
@@ -20,6 +21,17 @@
   &:hover {
     background-color: $border-color;
     color: $text-color;
+  }
+}
+@mixin btn-filled($fill: $color-brand, $fill-hover: $color-brand-light, $text: $color-white, $radius: $border-radius) {
+  @include transition;
+  background-color: $fill;
+  color: $text;
+  border-radius: $radius;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $fill-hover;
   }
 }
 

@@ -22,3 +22,9 @@ a:active {
 .btn-outline-accent {
   @include btn-outline($color-accent);
 }
+.btn-filled-brand {
+  @include btn-filled();
+}
+.btn-filled-accent {
+  @include btn-filled($color-accent, $color-accent-light);
+}

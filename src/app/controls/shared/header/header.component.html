@@ -12,8 +12,8 @@
       </div>
       <div class="col-md-3">
         <nav class="site-navigation right">
-          <li *ngIf="!(af.auth | async)">
-            <button class="btn btn-outline-primary my-2 my-sm-0" (click)="authService.login()">
+          <li *ngIf="!(af.auth | async)" class="btn-header">
+            <button class="btn btn-outline-brand my-2 my-sm-0" (click)="authService.login()">
               Login with Google
             </button>
           </li>

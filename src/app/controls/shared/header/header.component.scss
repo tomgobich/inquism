@@ -3,7 +3,9 @@ header {
   width: 100%;
   background-color: #434A54;
   padding: 10px;
-  margin: 0 auto;
+  margin: 0 auto 30px;
+
+  * { margin-bottom: 0; }
 
   .logo {
     color: white;
@@ -21,6 +23,17 @@ header {
       height: 100%;
       line-height: $header-height;
       float: left;
+
+      &.btn-header {
+        margin-top: -2px;
+      }
+    }
+
+    &:not(.right) {
+
+      li {
+        padding: 0 10px;
+      }
     }
   }
 }

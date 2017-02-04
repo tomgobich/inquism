@@ -1,0 +1,10 @@
+<ng-container *ngIf="(questions | async)?.length < 0">
+  <div class="well" *ngFor="let question of questions | async">
+    <h3>{{ question.question }}</h3>
+  </div>
+</ng-container>
+<div class="well" *ngIf="(questions | async)?.length < 1">
+  <h4>Damn, there are no questions?!</h4>
+  <p>The world can't be out of questions, we'd have nothing to live for!</p>
+  <a routerLink="/post/question"><button class="btn btn-outline-accent">Quick, Ask A Question!</button></a>
+</div>

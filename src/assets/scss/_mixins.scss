@@ -1,0 +1,30 @@
+// MIXINS
+// ------------------------------
+
+
+// Borders
+@mixin border-outline ($border-size: $border-width-sm, $color: $color-brand, $radius: $border-radius) {
+  border: $border-size solid $color;
+  border-radius: $radius;
+}
+
+
+// Buttons
+// prefix all with Bootstrap's btn class
+@mixin btn-outline($border-color: $color-brand, $text-color: $color-white) {
+  @include border-outline($color: $border-color);
+  color: $border-color;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $border-color;
+    color: $text-color;
+  }
+}
+
+
+// Transitions
+@mixin transition($property: all, $duration: 300ms, $ease: ease-in-out) {
+  transition: $property $duration $ease;
+}

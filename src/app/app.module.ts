@@ -13,6 +13,7 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PostQuestionPageComponent } from './pages/post-question-page/post-question-page.component';
 import { HeaderComponent } from './controls/shared/header/header.component';
+import { QuestionsListComponent } from './controls/shared/questions-list/questions-list.component';
 
 // Site routing
 const appRoutes: Routes = [
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     NotFoundPageComponent,
     HomePageComponent,
     PostQuestionPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    QuestionsListComponent
   ],
   imports: [
     BrowserModule,

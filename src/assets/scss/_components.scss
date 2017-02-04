@@ -1,0 +1,24 @@
+// COMPONENTS
+// ------------------------------
+
+
+// Anchors
+a,
+a:visited {
+  color: $color-brand;
+  @include transition();
+}
+a:hover,
+a:active {
+  color: $color-brand-light;
+  text-decoration: none;
+}
+
+
+// Buttons
+.btn-outline-brand {
+  @include btn-outline();
+}
+.btn-outline-accent {
+  @include btn-outline($color-accent);
+}

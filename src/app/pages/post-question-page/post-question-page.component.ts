@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TagsValidator } from '../../validators/tags.validator';
@@ -15,7 +16,7 @@ export class PostQuestionPageComponent implements OnInit {
   tags: FirebaseListObservable<any[]>;
   questionForm: FormGroup;
 
-  constructor(private af: AngularFire, private authService: AuthService) {
+  constructor(private af: AngularFire, private authService: AuthService, private router: Router) {
     this.questions  = af.database.list('/questions');
     this.tags       = af.database.list('/tags');
   }
@@ -44,6 +45,7 @@ export class PostQuestionPageComponent implements OnInit {
       if(user) {
         let newQuestion = this.questions.push({ question, tags, postDate, user }).key;
         this.authService.postUserQuestion(newQuestion);
+        this.router.navigate(['/'])
       }
       else {
         console.warn('user is not logged in');

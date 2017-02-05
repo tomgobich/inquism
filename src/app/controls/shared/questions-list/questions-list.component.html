@@ -1,13 +1,8 @@
 <ng-container *ngIf="(questions | async)?.length > 0">
   <div class="question-list">
-    <div class="list anchored question-block" [routerLink]="['/question', question.$key]" *ngFor="let question of questions | async">
-      <h3 class="question-title">
-        {{ question.question }}
-        <span class="status-flag-text-success question-resolved" *ngIf="question.answer">[Resolved] </span>
-      </h3>
-      <p class="question-details">Asked by {{ question.user.displayName }} {{ question.postDate | amTimeAgo }}</p>
-      <p class="question-answers">{{ question.comments?.length || 0 }} answers</p>
-    </div>
+    <a [routerLink]="['/question', question.$key]" *ngFor="let question of questions | async">
+      <app-question-details [question]="question" [anchored]="true"></app-question-details>
+    </a>
   </div>
 </ng-container>
 <div class="well" *ngIf="(questions | async)?.length < 1">

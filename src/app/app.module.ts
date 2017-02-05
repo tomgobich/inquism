@@ -15,11 +15,14 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PostQuestionPageComponent } from './pages/post-question-page/post-question-page.component';
 import { HeaderComponent } from './controls/shared/header/header.component';
 import { QuestionsListComponent } from './controls/shared/questions-list/questions-list.component';
+import { QuestionPageComponent } from './pages/question-page/question-page.component';
+import { QuestionDetailsComponent } from './controls/shared/question-details/question-details.component';
 
 // Site routing
 const appRoutes: Routes = [
   { path: '',                 component: HomePageComponent },
   { path: 'post/question',    component: PostQuestionPageComponent, canActivate: [AuthGuardService] },
+  { path: 'question/:id',     component: QuestionPageComponent },
   { path: '**',               component: NotFoundPageComponent }
 ];
 
@@ -32,7 +35,9 @@ const appRoutes: Routes = [
     HomePageComponent,
     PostQuestionPageComponent,
     HeaderComponent,
-    QuestionsListComponent
+    QuestionsListComponent,
+    QuestionPageComponent,
+    QuestionDetailsComponent
   ],
   imports: [
     BrowserModule,

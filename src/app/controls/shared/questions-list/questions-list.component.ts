@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
@@ -12,7 +12,7 @@ export class QuestionsListComponent implements OnInit {
 
   constructor(private af: AngularFire) {
     this.questions = af.database.list('/questions');
-    this.questions.first().subscribe(e => console.log(e));
+    this.questions.first().subscribe(e => console.debug(e));
   }
 
   ngOnInit() {

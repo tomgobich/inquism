@@ -1,0 +1,8 @@
+<div class="list question-block"  [ngClass]="{'anchored': anchored}" *ngIf="question">
+  <h3 class="question-title">
+    {{ question.question }}
+    <span class="status-flag-text-success question-resolved" *ngIf="question?.answer">[Resolved] </span>
+  </h3>
+  <p class="question-details">Asked by {{ question.user.displayName }} {{ question.postDate | amTimeAgo }}</p>
+  <p class="question-answers">{{ question.comments?.length || 0 }} answers</p>
+</div>

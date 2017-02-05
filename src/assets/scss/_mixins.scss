@@ -2,8 +2,35 @@
 // ------------------------------
 
 
+// Anchors
+@mixin anchor($color: $color-brand, $color-hover: $color-brand-light) {
+  @include transition();
+  color: $color;
+
+  &:hover,
+  &:active {
+    color: $color-hover;
+    text-decoration: none;
+  }
+}
+
+
+// Status Flag
+@mixin status-flag($color: $color-success) {
+  @include border-outline($color: $color);
+  width: 100%;
+  color: $color;
+  background-color: rgba($color, 0.03);
+  padding: $spacing-md;
+  margin: $spacing-md;
+}
+@mixin status-flag-text($color: $color-success) {
+  color: $color;
+}
+
+
 // Borders
-@mixin border-outline ($border-size: $border-width-sm, $color: $color-brand, $radius: $border-radius) {
+@mixin border-outline($border-size: $border-width-sm, $color: $color-brand, $radius: $border-radius) {
   border: $border-size solid $color;
   border-radius: $radius;
 }
@@ -33,6 +60,25 @@
   &:hover {
     background-color: $fill-hover;
   }
+}
+
+
+// Lists
+@mixin list($color-background: $color-black-alight) {
+  @include border-outline($color: rgba($color-background, 0.10));
+  width: 100%;
+  background-color: $color-background;
+  padding: $spacing-lg;
+  margin: $spacing-md 0;
+
+  p {
+    margin: 0;
+  }
+}
+@mixin list-anchored($color-background: $color-black-alight) {
+  @include list($color-background);
+  @include anchor($color-text);
+  cursor: pointer;
 }
 
 

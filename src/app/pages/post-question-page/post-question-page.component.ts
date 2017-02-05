@@ -4,6 +4,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TagsValidator } from '../../validators/tags.validator';
 import { AuthService } from '../../services/auth/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-post-question-page',
@@ -38,8 +39,8 @@ export class PostQuestionPageComponent implements OnInit {
 
     if(questionForm.valid) {
       let question  = questionForm.value.question;
-      let tags      = questionForm.value.tags.split(" ");
-      let postDate  = new Date();
+      let tags      = questionForm.value.tags.toLowerCase().split(" ");
+      let postDate  = firebase.database.ServerValue.TIMESTAMP;
       let user      = this.authService.user.google;
 
       if(user) {

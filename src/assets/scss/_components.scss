@@ -4,27 +4,31 @@
 
 // Anchors
 a,
-a:visited {
-  color: $color-brand;
-  @include transition();
-}
-a:hover,
-a:active {
-  color: $color-brand-light;
-  text-decoration: none;
-}
+a:visited { @include anchor(); }
+
+
+// Status Flags
+.status-flag-success      { @include status-flag(); }
+.status-flag-warn         { @include status-flag($color-warn); }
+.status-flag-fail         { @include status-flag($color-fail); }
+
+.status-flag-text-success { @include status-flag-text(); }
+.status-flag-text-warn    { @include status-flag-text($color-warn); }
+.status-flag-text-fail    { @include status-flag-text($color-fail); }
 
 
 // Buttons
-.btn-outline-brand {
-  @include btn-outline();
-}
-.btn-outline-accent {
-  @include btn-outline($color-accent);
-}
-.btn-filled-brand {
-  @include btn-filled();
-}
-.btn-filled-accent {
-  @include btn-filled($color-accent, $color-accent-light);
+.btn-outline-brand  { @include btn-outline(); }
+.btn-outline-accent { @include btn-outline($color-accent); }
+.btn-filled-brand   { @include btn-filled(); }
+.btn-filled-accent  { @include btn-filled($color-accent, $color-accent-light); }
+
+
+// Lists
+.list {
+  @include list();
+
+  &.anchored {
+    @include list-anchored();
+  }
 }

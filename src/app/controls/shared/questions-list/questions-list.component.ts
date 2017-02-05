@@ -12,6 +12,7 @@ export class QuestionsListComponent implements OnInit {
 
   constructor(private af: AngularFire) {
     this.questions = af.database.list('/questions');
+    this.questions.first().subscribe(e => console.log(e));
   }
 
   ngOnInit() {

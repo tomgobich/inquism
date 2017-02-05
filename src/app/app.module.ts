@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { AuthModule } from './modules/auth.module';
+import { MomentModule } from 'angular2-moment';
 
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    AuthModule
+    AuthModule,
+    MomentModule
   ],
   providers: [
     AuthService,

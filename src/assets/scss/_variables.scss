@@ -10,6 +10,15 @@ $color-accent-light: #FC6E51;
 
 $color-white:        #ebebeb;
 $color-black:        #333;
+$color-black-alight: rgba(0, 0, 0, 0.03);
+$color-black-amed:   rgba(0, 0, 0, 0.10);
+
+$color-success:      #37BC9B;
+$color-warn:         #F6BB42;
+$color-fail:         #BF263C;
+
+$color-text:         $color-black;
+$color-text-invert:  invert($color-text);
 
 
 // Borders

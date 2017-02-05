@@ -6,8 +6,8 @@
       </div>
       <div class="col-md-6">
         <nav class="site-navigation">
-          <li class="align-middle"><a routerLink="/">Home</a></li>
-          <li *ngIf="(af.auth | async)"><a routerLink="/post/question">Ask Question</a></li>
+          <li class="align-middle"><a class="white" routerLink="/">Home</a></li>
+          <li *ngIf="(af.auth | async)"><a class="white" routerLink="/post/question">Ask Question</a></li>
         </nav>
       </div>
       <div class="col-md-3">
@@ -17,7 +17,7 @@
               Login with Google
             </button>
           </li>
-          <li *ngIf="(af.auth | async)"><a routerLink="/signup" (click)="af.auth.logout()">Logout</a></li>
+          <li *ngIf="(af.auth | async)"><a class="white" routerLink="/signup" (click)="af.auth.logout()">Logout</a></li>
         </nav>
       </div>
     </div>

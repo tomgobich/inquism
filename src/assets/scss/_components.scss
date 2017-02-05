@@ -5,6 +5,7 @@
 // Anchors
 a,
 a:visited { @include anchor(); }
+a.white   { @include anchor($color-white); }
 
 
 // Status Flags
